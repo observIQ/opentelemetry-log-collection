@@ -92,3 +92,15 @@ for-all:
 
 .PHONY: ci-check
 ci-check: vet lint check-license
+
+
+checkallfieldalignment: 
+	fieldalignment ./...
+fixallfieldalignment: 
+	fieldalignment -fix ./...
+
+
+checkfieldalignment: 
+	fieldalignment $$(find ./ -name '*$(PACK)')
+fixfieldalignment : 
+	fieldalignment -fix $$(find ./ -name '*$(PACK)')
